@@ -1,20 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 
 const Blog = () => {
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setSubmit(true);
-        setPost(title,content,tags);
-        console.log(post);
-    }
-
+    
     const [title,setTitle] = useState("");
     const [content,setContent] = useState("");
     const [tags,setTags] = useState([]);
     const [submit,setSubmit] = useState(false);
-    const [post,setPost] = useState({});
+    const [post,setPost] = useState([]);
+
+    function uploadData() {
+        const postUrl = 'https://sheet.best/api/sheets/1706f132-38b8-41dd-b218-3b270950780f';
+        axios.post(postUrl, post)
+        .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          });
+    }
+
+
+    useEffect(() => {
+        console.log(post)
+        // uploadData(); // This is be executed when `post` state changes
+    }, [post])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmit(true);
+        setPost({
+            ...{title},
+            ...{content},
+            ...{tags}
+        });
+    }
+
 
     return (
         <div>
@@ -28,7 +52,7 @@ const Blog = () => {
 
             <label htmlFor="post-tags">Tags/Catégories </label>
             <input type="text" name="post-tags" id="post-tags" value={tags} onChange={(e)=>{
-                let newTags = e.target.value.split(',');
+                let newTags = e.target.value.toLowerCase().split(',');
                 setTags(newTags);
             }}/>
             <input type="submit" value="Créer mon post"/>
