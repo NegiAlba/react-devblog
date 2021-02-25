@@ -1,7 +1,26 @@
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f8f9fa;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $background;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #770271;
+  }
+
 .site-navigation {
     height:65px;
     width:100%;
-    background-color:antiquewhite;
+    background-color:$background;
     display:flex;
     justify-content:space-between;
     color: $text-color;
@@ -9,13 +28,21 @@
     z-index: 100;
     top: 0;
 
+    .hamburger {
+        font-size: 36px;
+        width: 65px;
+        align-items:center;
+        cursor: pointer;
+        display: none;
+    }
+
     .nav-content-container {
         display: flex;
         align-items: center;
         margin-right: 30px;
     
         .ant-avatar {
-            background-color: transparent;
+            background-color: $background;
             border: 1px solid #444;
         }
     }
@@ -46,16 +73,16 @@
         margin-right:20px;
         li {
             line-height:3;
+            a{
+                text-decoration:none;
+                padding:0 1rem 0 1rem;
+                font-size: 1.25rem;
+                color:$text-color;
+                &:hover{
+                    color: $text-link;
+                }
+            }
         }
-        a{
-            text-decoration:none;
-            padding:0 1rem 0 1rem;
-            font-size: 1.25rem;
-            color:$text-link;
-        }
-    }
-    .hamburger{
-        display:none;
     }
 }
 
@@ -64,7 +91,7 @@
         .nav-content-container {
             width: 300px;
             height: calc(100% - 65px);
-            background: antiquewhite;
+            background: $background;
             position: fixed;
             top: 65px;
             left: -300px;
@@ -100,9 +127,9 @@
             .nav-content-container {
                 left: 0px;
             }
-            .hamburger {
-                display: flex;
-            }
+        }
+        .hamburger {
+            display: flex;
         }
     }
 }
