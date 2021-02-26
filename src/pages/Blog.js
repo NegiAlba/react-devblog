@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import trending from '../assets/mocks/trending';
 import {PostMasonry} from '../components/common';
 import axios from 'axios';
 
 
-const apiUrl = 'http://localhost:3000/api/v1/posts'
+const apiUrl = 'http://localhost:5000/api/v1/posts'
 
 const Blog = () => {
     const [apiPosts,setApiPosts] = useState([]);

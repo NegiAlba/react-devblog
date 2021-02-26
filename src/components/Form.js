@@ -10,7 +10,7 @@ const Form = () => {
     const [post,setPost] = useState([]);
 
     function uploadData() {
-        const postUrl = 'https://sheet.best/api/sheets/1706f132-38b8-41dd-b218-3b270950780f';
+        const postUrl = 'http://localhost:5000/api/v1/posts';
         axios.post(postUrl, post)
         .then(function (response) {
             console.log(response);
@@ -25,7 +25,7 @@ const Form = () => {
 
     useEffect(() => {
         console.log(post)
-        // uploadData(); // This is be executed when `post` state changes
+        uploadData(); // This is be executed when `post` state changes
     }, [post])
 
     const handleSubmit = (e) => {
