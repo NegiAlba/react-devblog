@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Input, Button} from 'antd';
+const { TextArea } = Input;
 
 const Form = () => {
+
         
     const [title,setTitle] = useState("");
     const [content,setContent] = useState("");
@@ -9,17 +12,16 @@ const Form = () => {
     const [submit,setSubmit] = useState(false);
     const [post,setPost] = useState([]);
 
-    function uploadData() {
+    async function uploadData() {
         const postUrl = 'http://localhost:5000/api/v1/posts';
-        axios.post(postUrl, post)
-        .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
+        try {
+            const createPost = await axios.post(postUrl, post);
+            console.log(createPost)
+        } catch (error) {
             console.log(error.response.data);
             console.log(error.response.status);
             console.log(error.response.headers);
-          });
+        }
     }
 
 
@@ -41,20 +43,22 @@ const Form = () => {
 
     return (
         <div>
-            <form className="post-form" onSubmit={handleSubmit}>
-                <label htmlFor="post-title">Titre du post : </label>
-                <input type="text" name="post-title" id="post-title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
+                <form className="post-form" onSubmit={handleSubmit}>
+                    <label htmlFor="post-title">Titre du post : </label>
+                    <Input name="post-title" id="post-title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
 
-                <label htmlFor="post-content">Contenu : </label>
-                <textarea name="post-content" id="post-content" cols="30" rows="10" value={content} onChange={(e)=>setContent(e.target.value)}></textarea>
+                    <label htmlFor="post-content">Contenu : </label>
+                    <TextArea name="post-content" id="post-content" cols="30" rows="10" value={content} onChange={(e)=>setContent(e.target.value)}></TextArea>
 
-                <label htmlFor="post-tags">Tags/Catégories </label>
-                <input type="text" name="post-tags" id="post-tags" value={tags} onChange={(e)=>{
-                    let newTags = e.target.value.toLowerCase().split(',');
-                    setTags(newTags);
-                }}/>
-                <input type="submit" value="Créer mon post"/>
-            </form>
+                    <label htmlFor="post-tags">Tags/Catégories </label>
+                    <Input name="post-tags" id="post-tags" value={tags} onChange={(e)=>{
+                        let newTags = e.target.value.toLowerCase().split(',');
+                        setTags(newTags);
+                    }}/>
+                    <Button key="submit" type="primary" onClick={handleSubmit}>
+                        Créer le post
+                    </Button>
+                </form>
         </div>
     )
 }

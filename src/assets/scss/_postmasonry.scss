@@ -4,6 +4,16 @@
     margin : 2rem 0;
 }
 
+.blog-latest{
+    display:grid;
+    grid-gap: 30px;
+    margin : 2rem 0;
+}
+
+.creating-row{
+    margin:2rem;
+}
+
 @media screen and (max-width: 900px) {
     .masonry {
         display: flex;
