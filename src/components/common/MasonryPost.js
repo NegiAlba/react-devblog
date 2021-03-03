@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const MasonryPost = ({post,tags}) => {
     return (
-        <Link to={`blog/${post.title}`} className="masonry-post overlay" href="/">
+        <Link to={`blog/${post.title}`} className="masonry-post overlay">
             <div className="masonry-text" style={{justifyContent: tags ? 'space-between' : 'flex-end'}}>
             <TagRow tags={post.tags} />
                 <div>

@@ -11,7 +11,6 @@ const Single = () => {
         try {
             const res = await axios.get(`${apiHandle}/${match.params.title}`);
             setPost(res.data);
-            console.log(post);
         } catch (error) {
             console.log(error);
         }
@@ -23,7 +22,6 @@ const Single = () => {
         <section className="single">
             <h1>{post.title}</h1>
             <p>{post.content}</p>
-            {/* <Link to='/blog' component={Blog}>Return to blog posts</Link> */}
             <Link to="/blog">Retour au blog</Link>
         </section>
     )
