@@ -52,8 +52,8 @@ const Blog = () => {
             </div>
             <div className="row">
                 <h2 className="blog-title">Posts</h2>
-                <PostMasonry posts={trending} columns={4}/>
                 <PostMasonry posts={apiPosts} columns={3}/>
+                <PostMasonry posts={trending} columns={4}/>
             </div>
         </section>
     )

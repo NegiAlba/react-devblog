@@ -35,7 +35,7 @@ const Navigation = () => {
                       navLinks.map((link,index)=>{
                           return (
                           <li className= "navigation-item"  key={index}>
-                              <NavLink to={link.path} activeClassName="selected">
+                              <NavLink to={link.path} exact activeClassName="selected">
                                   {link.title}
                               </NavLink>
                           </li>

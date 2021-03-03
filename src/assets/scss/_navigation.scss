@@ -16,7 +16,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #770271;
   }
-
+.navigation-item .selected{
+    color:black;
+}
 .site-navigation {
     height:65px;
     width:100%;
