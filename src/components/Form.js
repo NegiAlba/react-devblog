@@ -9,11 +9,11 @@ const Form = () => {
     const [title,setTitle] = useState("");
     const [content,setContent] = useState("");
     const [tags,setTags] = useState([]);
-    const [submit,setSubmit] = useState(false);
+    const [setSubmit] = useState(false);
     const [post,setPost] = useState([]);
 
     async function uploadData() {
-        const postUrl = 'http://localhost:5000/api/v1/posts';
+        const postUrl = 'https://boiling-bayou-80998.herokuapp.com/api/v1/posts';
         try {
             const createPost = await axios.post(postUrl, post);
             console.log(createPost)
