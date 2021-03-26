@@ -13,7 +13,7 @@ const Form = () => {
     const [post,setPost] = useState([]);
 
     async function uploadData() {
-        const postUrl = 'https://boiling-bayou-80998.herokuapp.com/api/v1/posts';
+        const postUrl = 'https://react-devblog-2021.herokuapp.com/api/v1/posts';
         try {
             const createPost = await axios.post(postUrl, post);
             console.log(createPost)
