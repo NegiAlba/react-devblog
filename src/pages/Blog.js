@@ -7,7 +7,7 @@ import Form from '../components/Form';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
 
-const apiUrl = 'http://localhost:5000/api/v1/posts'
+const apiUrl = 'https://boiling-bayou-80998.herokuapp.com/api/v1/posts'
 
 const Blog = () => {
     const [apiPosts,setApiPosts] = useState([]);
